@@ -1,0 +1,68 @@
+﻿<section>
+
+  <h2>
+    &nbsp;
+    <p class="btn btn-primary pull-right" data-ui-sref="talys.create">
+      <i class="glyphicon glyphicon-plus"></i>
+    </p>
+  </h2>
+
+  <div class="list-group">
+    <li ng-repeat="upload in vm.uploads" class="list-group-item">
+
+      <p class="list-group-item-text pull-right">
+        <small>
+          Tạo lúc
+          <b ng-bind="upload.created | date:'HH:mm'"></b>
+          ngày
+          <b ng-bind="upload.created | date:'dd/MM/yyyy'"></b>
+        </small>
+        <small ng-if="upload.created_by">
+          bởi
+          <b ng-bind="upload.created_by"></b>
+        </small>
+      </p>
+
+      <h4 class="list-group-item-heading">
+        <b>{{upload.title ? upload.title : 'Không có tiêu đề'}}</b>
+      </h4>
+
+      <p class="list-group-item-text">
+        <a href="{{upload.link}}">{{upload.link}}</a>
+      </p>
+
+      <p ng-if="upload.describe" class="list-group-item-text">Miêu tả: {{upload.describe}}</p>
+
+      <p class="list-group-item-text">
+      <div class="image-pic" ng-repeat="picFile in upload.urlImgs">
+        <img ng-src="/{{picFile.url}}" alt="{{picFile.name}}" title="{{picFile.name}}" id="myImg" ng-click="viewImg(picFile)"
+             class="img-thumbnail" style="max-height: 100px; min-height: 100px;">
+        <div class="edit">
+          <a target="_self" href="/{{picFile.url}}" download="{{picFile.name}}">
+            <i class="fa fa-download fa-lg"></i>
+          </a>
+        </div>
+      </div>
+      </p>
+
+      <p class="list-group-item-text">
+        <span ng-repeat="urlFile in upload.urlFiles">
+        {{$index !== 0 ? ',' : ''}}
+        <a target="_self" href="/{{urlFile.url}}" download="{{urlFile.name}}">
+          <span>{{urlFile.name}}</span>
+        </a>
+        ({{urlFile.size}})
+        </span>
+      </p>
+
+    </li>
+  </div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <span class="closeImg">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+
+</section>

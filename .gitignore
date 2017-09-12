@@ -21,7 +21,9 @@ coverage/
 # ======================
 public/dist/
 uploads
-modules/users/client/img/profile/uploads
+modules/users/client/img/profile/uploads/
+modules/talys/client/img/
+modules/talys/client/files/
 config/env/local.js
 config/env/local-*.js
 *.pem

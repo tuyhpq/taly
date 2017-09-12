@@ -29,9 +29,12 @@
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: '/modules/core/client/views/home.client.view.html',
-        controller: 'HomeController',
-        controllerAs: 'vm'
+        templateUrl: '/modules/talys/client/views/talys-list.client.view.html',
+        controller: 'ListTalysController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Trang Chủ'
+        }
       })
       .state('not-found', {
         url: '/not-found',

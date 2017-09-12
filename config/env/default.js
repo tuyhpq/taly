@@ -53,6 +53,20 @@ module.exports = {
           fileSize: 1 * 1024 * 1024 // Max file size in bytes (1 MB)
         }
       }
+    },
+    upload: {
+      image: {
+        dest: './modules/talys/client/img/',
+        limits: {
+          fileSize: 10 * 1024 * 1024 // Max file size in bytes (10 MB)
+        }
+      },
+      file: {
+        dest: './modules/talys/client/files/',
+        limits: {
+          fileSize: 25 * 1024 * 1024 // Max file size in bytes (25 MB)
+        }
+      }
     }
   },
   shared: {

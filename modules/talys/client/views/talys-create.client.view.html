@@ -1,0 +1,80 @@
+<section>
+
+  <h2>
+    Thêm Chủ Đề
+    <p class="btn btn-primary pull-right" data-ui-sref="home">
+      <i class="glyphicon glyphicon-arrow-left"></i> Trở về
+    </p>
+  </h2>
+
+  <div class="col-md-12">
+    <form name="vm.form.uploadForm" class="form-horizontal" ng-submit="vm.save(vm.form.uploadForm.$valid)" novalidate>
+      <fieldset>
+        <div class="row" style="display: flex;">
+          <div class="col-sm-4 well">
+            <div class="form-group">
+              <div class="col-sm-3">
+                <label class="control-label">Tiêu đề:</label>
+              </div>
+              <div class="col-sm-9">
+                <input class="form-control" name="title" type="text" ng-model="vm.upload.title" id="title" placeholder="Không bắt buộc" autofocus>
+              </div>
+            </div>
+            <div class="form-group" show-errors>
+              <div class="col-sm-3">
+                <label class="control-label">Liên kết:</label>
+              </div>
+              <div class="col-sm-9">
+                <input class="form-control" name="link" type="url" ng-model="vm.upload.link" id="link" placeholder="Không bắt buộc">
+                <p class="help-block error-text" ng-show="vm.form.uploadForm.link.$error.url">Liên kết không hợp lệ!</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-3">
+                <label class="control-label">Miêu tả:</label>
+              </div>
+              <div class="col-sm-9">
+                <textarea name="describe" data-ng-model="vm.upload.describe" id="describe" class="form-control" rows="3" placeholder="Không bắt buộc"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8 well" style="background: white;">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <button accept="image/*" class="btn btn-success btn-md" ngf-select="loadingImage = false; selectImages(selectedImages)" ng-model="selectedImages"
+                        ngf-before-model-change="loadingImage = true" multiple>Chọn hình ảnh
+                </button>
+                <img ng-show="loadingImage" ng-src="/modules/core/client/img/loaders/loader.gif" height="25" width="25" alt="Loading image...">
+              </div>
+            </div>
+            <div class="form-group" ng-show="vm.picFiles.length > 0">
+              <div class="image-pic" ng-repeat="picFile in vm.picFiles">
+                <img ngf-src="picFile" title="{{picFile.name}}" class="img-thumbnail" style="max-height: 100px; min-height: 100px;"
+                     ngf-drop>
+                <div class="edit" ng-click="removeImage($index)"><i class="fa fa-times fa-lg"></i></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12">
+                <button class="btn btn-success btn-md" ngf-select="loadingFile = false; selectFiles(selectedFiles)" ng-model="selectedFiles"
+                        ngf-before-model-change="loadingFile = true" multiple>Chọn tệp tin&nbsp;&nbsp;&nbsp;&nbsp;
+                </button>
+                <img ng-show="loadingFile" ng-src="/modules/core/client/img/loaders/loader.gif" height="25" width="25" alt="Loading image...">
+              </div>
+            </div>
+            <div class="form-group" ng-show="vm.allFiles.length > 0">
+              <span ng-repeat="allFile in vm.allFiles">{{$index !== 0 ? ',' : ''}}&nbsp;{{allFile.name}}
+                <i>({{getSizeToString(allFile.size)}})</i>&nbsp;<i class="fa fa-window-close" ng-click="removeFile($index)"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Hoàn Thành</button>
+          <img ng-show="loadingSubmit" ng-src="/modules/core/client/img/loaders/loader.gif" height="25" width="25" alt="Loading...">
+          <span ng-show="loadingSubmit">{{vm.progressImages + vm.progressFiles}}%</span>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
