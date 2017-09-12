@@ -5,9 +5,9 @@
     .module('talys')
     .controller('CreateTalysController', CreateTalysController);
 
-  CreateTalysController.$inject = ['$scope', '$state', '$window', 'TalysService', 'Notification', 'Upload', '$timeout'];
+  CreateTalysController.$inject = ['$scope', '$state', '$window', 'TalysService', 'Notification', 'Upload'];
 
-  function CreateTalysController($scope, $state, $window, TalysService, Notification, Upload, $timeout) {
+  function CreateTalysController($scope, $state, $window, TalysService, Notification, Upload) {
     var vm = this;
     vm.form = {};
 
@@ -53,7 +53,66 @@
         return false;
       }
       $scope.loadingSubmit = true;
-      vm.saveImages();
+      vm.saveImages(0);
+    };
+
+    vm.saveImages = function (index) {
+      if (index === vm.picFiles.length) {
+        vm.saveFiles(0);
+      } else {
+        Upload.upload({
+          url: '/api/uploads/picture',
+          data: {
+            newImage: vm.picFiles[index]
+          }
+        }).then(function (res) {
+          var urlImg = {
+            name: vm.picFiles[index].name,
+            url: res.data.nameFile
+          };
+          vm.upload.urlImgs.push(urlImg);
+          vm.saveImages(index + 1);
+        }, function (res) {
+          if (res.status > 0) {
+            Notification.error({
+              message: res.data,
+              title: '<i class="glyphicon glyphicon-remove"></i> Lỗi trong khi tải lên hình ảnh!'
+            });
+          }
+        }, function (evt) {
+          vm.progressImages = parseInt(50.0 * evt.loaded / evt.total, 10);
+        });
+      }
+    };
+
+    vm.saveFiles = function (index) {
+      if (index === vm.allFiles.length) {
+        vm.upload.$save(successCallback, errorCallback);
+      } else {
+        Upload.upload({
+          url: '/api/uploads/file',
+          data: {
+            newFile: vm.allFiles[index]
+          }
+        }).then(function (res) {
+          var urlFile = {
+            name: vm.allFiles[index].name,
+            url: res.data.nameFile,
+            size: $scope.getSizeToString(vm.allFiles[index].size)
+          };
+          vm.upload.urlFiles.push(urlFile);
+          vm.saveFiles(index + 1);
+        }, function (res) {
+          if (res.status > 0) {
+            Notification.error({
+              message: res.data,
+              title: '<i class="glyphicon glyphicon-remove"></i> Lỗi trong khi tải lên tệp tin!'
+            });
+          }
+        }, function (evt) {
+          vm.progressFiles = parseInt(50.0 * evt.loaded / evt.total, 10);
+        });
+      }
     };
 
     function successCallback(res) {
@@ -69,69 +128,6 @@
       });
       $scope.loadingSubmit = false;
     }
-
-    vm.saveImages = function (index = 0) {
-      if (index === vm.picFiles.length) {
-        vm.saveFiles();
-      } else {
-        Upload.upload({
-          url: '/api/uploads/picture',
-          data: {
-            newImage: vm.picFiles[index]
-          }
-        }).then(function (res) {
-          $timeout(function () {
-            var urlImg = {
-              name: vm.picFiles[index].name,
-              url: res.data.nameFile
-            };
-            vm.upload.urlImgs.push(urlImg);
-            vm.saveImages(index + 1);
-          });
-        }, function (res) {
-          if (res.status > 0) {
-            Notification.error({
-              message: res.data,
-              title: '<i class="glyphicon glyphicon-remove"></i> Lỗi trong khi tải lên hình ảnh!'
-            });
-          }
-        }, function (evt) {
-          vm.progressImages = parseInt(50.0 * evt.loaded / evt.total, 10);
-        });
-      }
-    };
-
-    vm.saveFiles = function (index = 0) {
-      if (index === vm.allFiles.length) {
-        vm.upload.$save(successCallback, errorCallback);
-      } else {
-        Upload.upload({
-          url: '/api/uploads/file',
-          data: {
-            newFile: vm.allFiles[index]
-          }
-        }).then(function (res) {
-          $timeout(function () {
-            var urlFile = {
-              name: vm.allFiles[index].name,
-              url: res.data.nameFile,
-              size: $scope.getSizeToString(vm.allFiles[index].size)
-            };
-            vm.upload.urlFiles.push(urlFile);
-            vm.saveFiles(index + 1);
-          });
-        }, function (res) {
-          if (res.status > 0) {
-            Notification.error({
-              message: res.data,
-              title: '<i class="glyphicon glyphicon-remove"></i> Lỗi trong khi tải lên tệp tin!'
-            });
-          }
-        }, function (evt) {
-          vm.progressFiles = parseInt(50.0 * evt.loaded / evt.total, 10);
-        });
-      }
-    };
 
     $scope.getSizeToString = function (size) {
       var outPut = 'unknown';
