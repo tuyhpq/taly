@@ -184,17 +184,15 @@ exports.checkCode = function (req, res) {
  * Get the information of auto application
  */
 exports.information = function (req, res) {
+  var httpTransport = (configRoot.secure && configRoot.secure.ssl === true) ? 'https://' : 'http://';
+  var baseUrl = configRoot.domain || httpTransport + req.headers.host;
+
   var info = {
     'author': 'Tuý Công Tử - 0164.840.3817',
-    'urlRecord': 'http://taly.waplux.com/files/873730/records.txt',
-    'urlFile': 'http://taly.waplux.com/files/873730/c9d0c9be297c47c9954197ecb04d5efe.txt',
-    'pass1': '6875845034401',
-    'pass3': '6875845034403',
-    'pass5': '6875845034405',
-    'pass7': '6875845034407',
-    'pass': '687584503440vv',
-    'passCustom': '687584503440',
-    'stop': 'false'
+    'urlRecords': baseUrl + '/api/getRecords',
+    'urlFiles': [baseUrl + '/api/getFile/c9d0c9be297c47c9954197ecb04d5efe'],
+    'urlCheck': baseUrl + '/api/auto/check/',
+    'stop': false
   };
-  return res.send(info);
+  return res.json(info);
 };

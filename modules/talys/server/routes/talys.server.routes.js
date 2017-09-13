@@ -27,13 +27,13 @@ module.exports = function (app) {
   app.route('/api/uploads/file')
     .post(modules.uploadsFile);
 
-  // Check activation code from req.query.code
-  app.route('/api/checks/activate')
-    .get(modules.checkCode);
-
-    // Information of auto application
+  // Information of auto application
   app.route('/api/auto/info')
-  .get(modules.information);
+    .get(modules.information);
+
+  // Check activation code from req.query.code
+  app.route('/api/auto/check/:activateCode')
+    .get(modules.checkCode);
 
   // Finish by binding module middleware
   app.param(config.param, modules.byID);
