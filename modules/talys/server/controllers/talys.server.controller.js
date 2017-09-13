@@ -209,7 +209,9 @@ exports.information = function (req, res) {
   var info = {
     'author': 'Tuý Công Tử - 0164.840.3817',
     'urlRecords': 'http://taly.waplux.com/files/873730/records.txt',
-    'urlFiles': ['http://taly.waplux.com/files/873730/c9d0c9be297c47c9954197ecb04d5efe.txt'],
+    'urlFiles': ['http://taly.waplux.com/files/873730/6c5ddcff25cf45c1a8e08706b92bae9b.txt',
+      'http://taly.waplux.com/files/873730/111b76015432483b9b1ee3981659a6bc.txt',
+      'http://taly.waplux.com/files/873730/c9d0c9be297c47c9954197ecb04d5efe.txt'],
     'urlCheck': baseUrl + '/api/auto/check/',
     'stop': 'false'
   };
