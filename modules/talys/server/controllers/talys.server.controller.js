@@ -177,7 +177,26 @@ exports.uploadsFile = function (req, res) {
  * Check activation code from req.query.code
  */
 exports.checkCode = function (req, res) {
-  var code = req.query.code;
+  var code = req.params.activateCode;
+  var time = 0;
+
+  if (code === '687584503440@1') {
+    time = 60 * 24;
+  } else if (code === '687584503440@3') {
+    time = 60 * 24 * 3;
+  } else if (code === '687584503440@5') {
+    time = 60 * 24 * 5;
+  } else if (code === '687584503440@7') {
+    time = 60 * 24 * 7;
+  } else if (code === '687584503440@vv') {
+    time = 9999999;
+  } else if (code.length > 13 && code.slice(0, 13) === '687584503440@') {
+    var custom = code.slice(13, code.length);
+    time = parseInt(custom, 10);
+    time = isNaN(time) ? 0 : time;
+  }
+
+  return res.json({ 'time': time });
 };
 
 /**
@@ -189,10 +208,11 @@ exports.information = function (req, res) {
 
   var info = {
     'author': 'Tuý Công Tử - 0164.840.3817',
-    'urlRecords': baseUrl + '/api/getRecords',
-    'urlFiles': [baseUrl + '/api/getFile/c9d0c9be297c47c9954197ecb04d5efe'],
+    'urlRecords': 'http://taly.waplux.com/files/873730/records.txt',
+    'urlFiles': ['http://taly.waplux.com/files/873730/c9d0c9be297c47c9954197ecb04d5efe.txt'],
     'urlCheck': baseUrl + '/api/auto/check/',
-    'stop': false
+    'stop': 'false'
   };
+
   return res.json(info);
 };
