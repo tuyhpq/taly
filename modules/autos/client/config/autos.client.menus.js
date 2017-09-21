@@ -2,21 +2,24 @@
   'use strict';
 
   angular
-    .module('talys')
+    .module('autos')
     .run(menuConfig);
 
   menuConfig.$inject = ['menuService'];
 
   function menuConfig(menuService) {
+
     menuService.addMenuItem('topbar', {
-      title: 'Upload',
-      state: 'talys',
+      title: 'Auto',
+      state: 'autos',
       type: 'dropdown',
       roles: ['*']
     });
-    menuService.addSubMenuItem('topbar', 'talys', {
-      title: 'Tạo Chủ Đề',
-      state: 'talys.create',
+
+    // Add the dropdown list item
+    menuService.addSubMenuItem('topbar', 'autos', {
+      title: 'Tạo Auto',
+      state: 'autos.create',
       roles: ['*']
     });
   }

@@ -1,7 +1,7 @@
 <section>
 
   <h2>
-    Thêm Chủ Đề
+    Tạo Chủ Đề
     <p class="btn btn-primary pull-right" data-ui-sref="home">
       <i class="glyphicon glyphicon-arrow-left"></i> Trở về
     </p>
@@ -42,22 +42,21 @@
             <div class="form-group">
               <div class="col-sm-12">
                 <button accept="image/*" class="btn btn-success btn-md" ngf-select="loadingImage = false; selectImages(selectedImages)" ng-model="selectedImages"
-                        ngf-before-model-change="loadingImage = true" multiple>Chọn hình ảnh
+                  ngf-before-model-change="loadingImage = true" multiple>Chọn hình ảnh
                 </button>
                 <img ng-show="loadingImage" ng-src="/modules/core/client/img/loaders/loader.gif" height="25" width="25" alt="Loading image...">
               </div>
             </div>
             <div class="form-group" ng-show="vm.picFiles.length > 0">
               <div class="image-pic" ng-repeat="picFile in vm.picFiles">
-                <img ngf-src="picFile" title="{{picFile.name}}" class="img-thumbnail" style="max-height: 100px; min-height: 100px;"
-                     ngf-drop>
+                <img ngf-src="picFile" title="{{picFile.name}}" class="img-thumbnail" style="max-height: 100px; min-height: 100px;" ngf-drop>
                 <div class="edit" ng-click="removeImage($index)"><i class="fa fa-times fa-lg"></i></div>
               </div>
             </div>
             <div class="form-group">
               <div class="col-sm-12">
                 <button class="btn btn-success btn-md" ngf-select="loadingFile = false; selectFiles(selectedFiles)" ng-model="selectedFiles"
-                        ngf-before-model-change="loadingFile = true" multiple>Chọn tệp tin&nbsp;&nbsp;&nbsp;&nbsp;
+                  ngf-before-model-change="loadingFile = true" multiple>Chọn tệp tin&nbsp;&nbsp;&nbsp;&nbsp;
                 </button>
                 <img ng-show="loadingFile" ng-src="/modules/core/client/img/loaders/loader.gif" height="25" width="25" alt="Loading image...">
               </div>

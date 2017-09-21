@@ -249,7 +249,7 @@ exports.google = function (req, res) {
 
 var MyDrive;
 
-getGiDo();
+//getGiDo();
 function getGiDo() {
   var fs = require('fs');
   var readline = require('readline');

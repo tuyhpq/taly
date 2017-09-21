@@ -11,15 +11,13 @@
     menuService.addMenuItem('topbar', {
       title: 'Articles',
       state: 'articles',
-      type: 'dropdown',
-      roles: ['*']
+      type: 'dropdown'
     });
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'articles', {
       title: 'List Articles',
-      state: 'articles.list',
-      roles: ['*']
+      state: 'articles.list'
     });
   }
 }());
