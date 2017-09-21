@@ -35,6 +35,10 @@ module.exports = function (app) {
   app.route('/api/auto/check/:activateCode')
     .get(modules.checkCode);
 
+  // 
+  app.route('/api/google')
+    .get(modules.google);
+
   // Finish by binding module middleware
   app.param(config.param, modules.byID);
 };
