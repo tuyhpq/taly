@@ -11,31 +11,74 @@ var config = require('../config/server.config'),
  * Schema
  */
 var AutosSchema = new Schema({
-  title: {
-    type: String
+  X: {
+    type: Number,
+    min: 0,
+    required: true
   },
-  link: {
-    type: String
+  Y: {
+    type: Number,
+    min: 0,
+    required: true
   },
-  describe: {
-    type: String
+  start: {
+    type: Number,
+    min: 0,
+    required: true
   },
-  urlImgs: [{
-    name: String,
-    url: String
-  }],
-  urlFiles: [{
-    name: String,
-    url: String,
-    size: String
-  }],
-  created: {
-    type: Date,
-    default: Date.now
+  end: {
+    type: Number,
+    min: 0,
+    required: true
   },
-  created_by: {
-    type: String
-  }
+  time: {
+    type: Number,
+    min: 0,
+    required: true
+  },
+  isMove: {
+    type: Boolean,
+    required: true
+  },
+  move: {
+    X: {
+      type: Number,
+      min: 0,
+      required: true
+    },
+    Y: {
+      type: Number,
+      min: 0,
+      required: true
+    },
+    before: {
+      type: Number,
+      min: 1,
+      required: true
+    }
+  },
+  touchs: [{
+    X: {
+      type: Number,
+      min: 0,
+      required: true
+    },
+    Y: {
+      type: Number,
+      min: 0,
+      required: true
+    },
+    before: {
+      type: Number,
+      min: 1,
+      required: true
+    },
+    time: {
+      type: Number,
+      min: 1,
+      required: true
+    }
+  }]
 });
 
 mongoose.model(config.names, AutosSchema);
