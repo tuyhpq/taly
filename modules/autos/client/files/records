@@ -39,7 +39,7 @@
         "name": "nem_bom",
         "new": "false",
         "playSet": {
-            "accelerator": "1",
+            "accelerator": "7",
             "interval": "0",
             "mode": "0",
             "playSeconds": "0#0#0",
