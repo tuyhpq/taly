@@ -205,13 +205,15 @@ exports.checkCode = function (req, res) {
 exports.information = function (req, res) {
   var httpTransport = (configRoot.secure && configRoot.secure.ssl === true) ? 'https://' : 'http://';
   var baseUrl = configRoot.domain || httpTransport + req.headers.host;
+  var url = baseUrl + '/modules/autos/client/files/';
 
   var info = {
     'author': 'Tuý Công Tử - 0164.840.3817',
-    'urlRecords': 'http://taly.waplux.com/files/873730/records.txt',
-    'urlFiles': ['http://taly.waplux.com/files/873730/6c5ddcff25cf45c1a8e08706b92bae9b.txt',
-      'http://taly.waplux.com/files/873730/111b76015432483b9b1ee3981659a6bc.txt',
-      'http://taly.waplux.com/files/873730/c9d0c9be297c47c9954197ecb04d5efe.txt'],
+    'urlRecords': url + 'records',
+    'urlFiles': [url + '6c5ddcff25cf45c1a8e08706b92bae9b',
+    url + '111b76015432483b9b1ee3981659a6bc',
+    url + 'c9d0c9be297c47c9954197ecb04d5efe',
+    url + '3872ac9a76a9426a9f771933ea3e9c5a'],
     'urlCheck': baseUrl + '/api/auto/check/',
     'stop': 'false'
   };
