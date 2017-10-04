@@ -111,6 +111,7 @@
       var blob = new Blob([vm.render], { type: 'text/plain' });
       var url = ($window.URL || $window.webkitURL).createObjectURL(blob);
       $window.open(url);
+      vm.url = url;
     };
 
     $scope.addTouchs = function (auto) {
