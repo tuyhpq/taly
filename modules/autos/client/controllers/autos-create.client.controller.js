@@ -151,7 +151,7 @@
       var auto = {};
       var touch = {};
 
-      for (let i in listStrings) {
+      for (var i = 0; i < listStrings.length; i++) {
         var line = listStrings[i];
 
         if (line.indexOf('MULTI:1:0:') !== -1) {
@@ -200,7 +200,7 @@
       var X, Y, time;
       var p = -1;
 
-      for (let i = index - 1; i > 0; i--) {
+      for (var i = index - 1; i > 0; i--) {
         if (isNaN(line[i]) === true) {
           if (p === -1) {
             Y = parseInt(line.slice(i + 1, index), 10);
