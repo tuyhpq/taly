@@ -26,7 +26,7 @@
             <div class="form-group">
               <div class="col-sm-7 text-right"><label class="control-label" for="time">Thời gian mặc định:</label></div>
               <div class="col-sm-5">
-                <input class="form-control" type="number" name="time" id="time" ng-model="vm.setting.time" ng-change="reloadAutos()">
+                <input class="form-control" type="number" name="time" id="time" ng-model="vm.setting.time">
               </div>
             </div>
           </div>
@@ -44,6 +44,14 @@
         <div class="row well" ng-repeat="auto in vm.autos">
           <!-- Dòng 1 -->
           <div class="row">
+              <div class="col-sm-3">
+                  <div class="form-group">
+                    <div class="col-sm-5 text-right"><label class="control-label" for="before">Bắt đầu sau:</label></div>
+                    <div class="col-sm-7">
+                      <input class="form-control" type="number" name="before" id="before" ng-model="auto.before" ng-change="reloadAutos()">
+                    </div>
+                  </div>
+                </div>
             <div class="col-sm-3">
               <div class="form-group">
                 <div class="col-sm-5 text-right"><label class="control-label" for="time_action">Thời gian:</label></div>
@@ -52,7 +60,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <div class="form-group">
                 <div class="col-sm-5 text-right"><label class="control-label" for="X">X:</label></div>
                 <div class="col-sm-7">
@@ -60,7 +68,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <div class="form-group">
                 <div class="col-sm-5 text-right"><label class="control-label" for="Y">Y:</label></div>
                 <div class="col-sm-7">
@@ -68,14 +76,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label" for="start_end">Độ dài</label></div>
-                <div class="col-sm-7">
-                  <label class="form-control" type="number" name="start_end" id="start_end" style="font-weight:normal;">
-                      {{auto.start}} → {{auto.end}}
-                    </label>
-                </div>
+                <div class="col-sm-12"><label class="control-label">(Từ {{auto.start}} → {{auto.end}})</label></div>
               </div>
             </div>
           </div>
@@ -86,36 +89,40 @@
               <div class="form-group">
                 <div class="col-sm-5 text-right"><label class="control-label" for="move">Di chuyển:</label></div>
                 <div class="col-sm-7">
-                  <input class="form-control" type="checkbox" name="move" id="move" ng-model="auto.isMove">
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3" ng-if="auto.isMove">
-              <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">X:</label></div>
-                <div class="col-sm-7">
-                  <input class="form-control" type="number" ng-model="auto.move.X">
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3" ng-if="auto.isMove">
-              <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">Y:</label></div>
-                <div class="col-sm-7">
-                  <input class="form-control" type="number" ng-model="auto.move.Y">
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3" ng-if="auto.isMove">
-              <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">Bắt đầu sau:</label></div>
-                <div class="col-sm-7">
-                  <input class="form-control" type="number" ng-model="auto.move.before">
+                  <button type="button" class="btn btn-primary form-control" ng-click="addMoves(auto)">Thêm</button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Hết dòng 2 -->
+          <!-- Dòng 2n -->
+          <div class="row" ng-repeat="move in auto.moves">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <div class="col-sm-5 text-right"><label class="control-label">X:</label></div>
+                <div class="col-sm-7">
+                  <input class="form-control" type="number" ng-model="move.X">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <div class="col-sm-5 text-right"><label class="control-label">Y:</label></div>
+                <div class="col-sm-7">
+                  <input class="form-control" type="number" ng-model="move.Y">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <div class="col-sm-5 text-right"><label class="control-label">Bắt đầu sau:</label></div>
+                <div class="col-sm-7">
+                  <input class="form-control" type="number" ng-model="move.before">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Hết dòng 2n -->
           <!-- Dòng 3 -->
           <div class="row">
             <div class="col-sm-3">
@@ -128,7 +135,7 @@
             </div>
           </div>
           <!-- Hết dòng 3 -->
-          <!-- Dòng n -->
+          <!-- Dòng 3n -->
           <div class="row" ng-repeat="touch in auto.touchs">
             <div class="col-sm-3">
               <div class="form-group">
@@ -163,14 +170,16 @@
               </div>
             </div>
           </div>
-          <!-- Hết dòng n -->
+          <!-- Hết dòng 3n -->
         </div>
 
         <div class="form-group">
           <button type="button" class="btn btn-primary" ng-click="addAction()">THÊM</button>
           <button type="button" class="btn btn-primary" ng-click="render()">XUẤT</button>
+          <button class="btn btn-success" ngf-select="import(selectedFiles)" ng-model="selectedFiles"
+                ngf-before-model-change="loadingFile = true">NHẬP
+          </button>
           <button type="submit" class="btn btn-primary">Hoàn Thành</button>
-          <a href="{{ vm.url }}">Tải Xuống</a>
           <img ng-show="loadingSubmit" ng-src="/modules/core/client/img/loaders/loader.gif" height="25" width="25" alt="Loading...">
           <span ng-show="loadingSubmit">{{vm.progressImages + vm.progressFiles}}%</span>
         </div>
