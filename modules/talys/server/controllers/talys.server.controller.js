@@ -214,7 +214,8 @@ exports.information = function (req, res) {
     url + '111b76015432483b9b1ee3981659a6bc',
     url + 'c9d0c9be297c47c9954197ecb04d5efe',
     url + '3872ac9a76a9426a9f771933ea3e9c5a',
-    url + '9f80d0a640bb464aa9a6f28a8f0493ee'],
+    url + '9f80d0a640bb464aa9a6f28a8f0493ee',
+    url + 'da72f2af50384900a0111446f7ea3230'],
     'urlCheck': baseUrl + '/api/auto/check/',
     'stop': 'false'
   };
