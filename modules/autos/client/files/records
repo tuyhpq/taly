@@ -3,7 +3,7 @@
         "name": "can_chien",
         "new": "false",
         "playSet": {
-            "accelerator": "8",
+            "accelerator": "7",
             "interval": "0",
             "mode": "1",
             "playSeconds": "0#0#0",
@@ -53,7 +53,7 @@
         "playSet": {
             "accelerator": "7",
             "interval": "0",
-            "mode": "0",
+            "mode": "1",
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
