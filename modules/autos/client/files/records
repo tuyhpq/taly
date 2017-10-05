@@ -3,7 +3,7 @@
         "name": "can_chien",
         "new": "false",
         "playSet": {
-            "accelerator": "7",
+            "accelerator": "6",
             "interval": "0",
             "mode": "1",
             "playSeconds": "0#0#0",
@@ -58,5 +58,17 @@
             "repeatTimes": "1"
         },
         "time": "1493880569"
+    },
+    "da72f2af50384900a0111446f7ea3230": {
+        "name": "auto_thap",
+        "new": "true",
+        "playSet": {
+            "accelerator": "1",
+            "interval": "0",
+            "mode": "0",
+            "playSeconds": "0#0#0",
+            "repeatTimes": "1"
+        },
+        "time": "1507203552"
     }
 }
