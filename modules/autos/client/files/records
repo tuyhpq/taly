@@ -9,6 +9,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
+        "priority": "4",
         "time": "1505141081"
     },
     "3872ac9a76a9426a9f771933ea3e9c5a": {
@@ -21,7 +22,21 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
+        "priority": "3",
         "time": "1506521811"
+    },
+    "5696c30b36064de594aaf8ef7681ec07": {
+        "name": "world_boss_skill",
+        "new": "false",
+        "playSet": {
+            "accelerator": "2",
+            "interval": "0",
+            "mode": "1",
+            "playSeconds": "0#0#0",
+            "repeatTimes": "1"
+        },
+        "priority": "0",
+        "time": "1507515015"
     },
     "6c5ddcff25cf45c1a8e08706b92bae9b": {
         "name": "thanh_titan",
@@ -33,6 +48,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
+        "priority": "5",
         "time": "1497635164"
     },
     "9f80d0a640bb464aa9a6f28a8f0493ee": {
@@ -45,6 +61,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
+        "priority": "2",
         "time": "1506557957"
     },
     "c9d0c9be297c47c9954197ecb04d5efe": {
@@ -57,18 +74,20 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
+        "priority": "6",
         "time": "1493880569"
     },
     "da72f2af50384900a0111446f7ea3230": {
         "name": "auto_thap",
-        "new": "true",
+        "new": "false",
         "playSet": {
             "accelerator": "1",
             "interval": "0",
-            "mode": "0",
+            "mode": "1",
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
+        "priority": "1",
         "time": "1507203552"
     }
 }
