@@ -26,10 +26,10 @@
         "time": "1506521811"
     },
     "5696c30b36064de594aaf8ef7681ec07": {
-        "name": "world_boss_skill",
+        "name": "thap_kho",
         "new": "false",
         "playSet": {
-            "accelerator": "2",
+            "accelerator": "1",
             "interval": "0",
             "mode": "1",
             "playSeconds": "0#0#0",
@@ -78,7 +78,7 @@
         "time": "1493880569"
     },
     "da72f2af50384900a0111446f7ea3230": {
-        "name": "auto_thap",
+        "name": "thap_thuong",
         "new": "false",
         "playSet": {
             "accelerator": "1",
