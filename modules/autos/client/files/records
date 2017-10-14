@@ -25,6 +25,18 @@
         "priority": "3",
         "time": "1506521811"
     },
+    "538f0208cbc1492ea5151ff19ca8db00": {
+        "name": "boss_new",
+        "new": "false",
+        "playSet": {
+            "accelerator": "1",
+            "interval": "0",
+            "mode": "1",
+            "playSeconds": "0#0#0",
+            "repeatTimes": "1"
+        },
+        "time": "1507998569"
+    },
     "5696c30b36064de594aaf8ef7681ec07": {
         "name": "thap_kho",
         "new": "false",

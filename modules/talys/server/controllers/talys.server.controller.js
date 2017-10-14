@@ -216,7 +216,8 @@ exports.information = function (req, res) {
     url + '3872ac9a76a9426a9f771933ea3e9c5a',
     url + '9f80d0a640bb464aa9a6f28a8f0493ee',
     url + 'da72f2af50384900a0111446f7ea3230',
-    url + '5696c30b36064de594aaf8ef7681ec07'],
+    url + '5696c30b36064de594aaf8ef7681ec07',
+	url + '538f0208cbc1492ea5151ff19ca8db00'],
     'urlCheck': baseUrl + '/api/auto/check/',
     'stop': 'false'
   };
