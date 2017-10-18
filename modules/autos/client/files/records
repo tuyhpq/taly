@@ -54,7 +54,7 @@
         "name": "thanh_titan",
         "new": "false",
         "playSet": {
-            "accelerator": "1",
+            "accelerator": "2",
             "interval": "0",
             "mode": "1",
             "playSeconds": "0#0#0",
