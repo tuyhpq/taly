@@ -1,9 +1,9 @@
 {
     "111b76015432483b9b1ee3981659a6bc": {
-        "name": "can_chien",
+        "name": "thap_full",
         "new": "false",
         "playSet": {
-            "accelerator": "6",
+            "accelerator": "1",
             "interval": "0",
             "mode": "1",
             "playSeconds": "0#0#0",
@@ -68,7 +68,7 @@
         "name": "world_boss",
         "new": "false",
         "playSet": {
-            "accelerator": "3",
+            "accelerator": "1",
             "interval": "0",
             "mode": "1",
             "playSeconds": "0#0#0",
