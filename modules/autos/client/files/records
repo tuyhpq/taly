@@ -1,4 +1,17 @@
 {
+    "038f899320554c0c869e865a543d901d": {
+        "name": "canchien",
+        "new": "true",
+        "playSet": {
+            "accelerator": "6",
+            "interval": "0",
+            "mode": "0",
+            "playSeconds": "0#0#0",
+            "repeatTimes": "1"
+        },
+        "priority": "2",
+        "time": "1510537195"
+    },
     "111b76015432483b9b1ee3981659a6bc": {
         "name": "thap_full",
         "new": "false",
@@ -9,7 +22,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "5",
+        "priority": "6",
         "time": "1505141081"
     },
     "3872ac9a76a9426a9f771933ea3e9c5a": {
@@ -22,7 +35,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "4",
+        "priority": "5",
         "time": "1506521811"
     },
     "538f0208cbc1492ea5151ff19ca8db00": {
@@ -61,7 +74,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "6",
+        "priority": "7",
         "time": "1497635164"
     },
     "9f80d0a640bb464aa9a6f28a8f0493ee": {
@@ -74,7 +87,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "3",
+        "priority": "4",
         "time": "1506557957"
     },
     "c9d0c9be297c47c9954197ecb04d5efe": {
@@ -87,7 +100,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "7",
+        "priority": "8",
         "time": "1493880569"
     },
     "da72f2af50384900a0111446f7ea3230": {
@@ -100,7 +113,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "2",
+        "priority": "3",
         "time": "1507203552"
     }
 }
