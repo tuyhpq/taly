@@ -218,7 +218,8 @@ exports.information = function (req, res) {
     url + 'da72f2af50384900a0111446f7ea3230',
     url + '5696c30b36064de594aaf8ef7681ec07',
 	url + '538f0208cbc1492ea5151ff19ca8db00',
-	url + '038f899320554c0c869e865a543d901d'],
+	url + '038f899320554c0c869e865a543d901d',
+	url + '02a4ba04ef604dfb880b475e739ead91'],
     'urlCheck': baseUrl + '/api/auto/check/',
     'stop': 'false'
   };
