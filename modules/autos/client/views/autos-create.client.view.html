@@ -15,7 +15,9 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="form-group">
-              <div class="col-sm-7 text-right"><label class="control-label" for="start">Thời gian bắt đầu:</label></div>
+              <div class="col-sm-7 text-right">
+                <label class="control-label" for="start">Thời gian bắt đầu:</label>
+              </div>
               <div class="col-sm-5">
                 <input class="form-control" type="number" name="start" id="start" ng-model="vm.setting.start" ng-change="reloadAutos()">
               </div>
@@ -24,7 +26,9 @@
 
           <div class="col-sm-4">
             <div class="form-group">
-              <div class="col-sm-7 text-right"><label class="control-label" for="time">Thời gian mặc định:</label></div>
+              <div class="col-sm-7 text-right">
+                <label class="control-label" for="time">Thời gian mặc định:</label>
+              </div>
               <div class="col-sm-5">
                 <input class="form-control" type="number" name="time" id="time" ng-model="vm.setting.time">
               </div>
@@ -33,7 +37,9 @@
 
           <div class="col-sm-4">
             <div class="form-group">
-              <div class="col-sm-7 text-right"><label class="control-label" for="spacing">Thời gian giãn cách:</label></div>
+              <div class="col-sm-7 text-right">
+                <label class="control-label" for="spacing">Thời gian giãn cách:</label>
+              </div>
               <div class="col-sm-5">
                 <input class="form-control" type="number" name="spacing" id="spacing" ng-model="vm.setting.spacing" ng-change="reloadAutos()">
               </div>
@@ -41,20 +47,24 @@
           </div>
         </div>
 
-        <div class="row well" ng-repeat="auto in vm.autos">
+        <div class="row well" ng-repeat="auto in vm.autos track by $index" ng-if="auto">
           <!-- Dòng 1 -->
           <div class="row">
-              <div class="col-sm-3">
-                  <div class="form-group">
-                    <div class="col-sm-5 text-right"><label class="control-label" for="before">Bắt đầu sau:</label></div>
-                    <div class="col-sm-7">
-                      <input class="form-control" type="number" name="before" id="before" ng-model="auto.before" ng-change="reloadAutos()">
-                    </div>
-                  </div>
-                </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label" for="time_action">Thời gian:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label" for="before">Bắt đầu sau:</label>
+                </div>
+                <div class="col-sm-7">
+                  <input class="form-control" type="number" name="before" id="before" ng-model="auto.before" ng-change="reloadAutos()">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <div class="col-sm-5 text-right">
+                  <label class="control-label" for="time_action">Thời gian:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" name="time_action" id="time_action" ng-model="auto.time" ng-change="reloadAutos()">
                 </div>
@@ -62,7 +72,9 @@
             </div>
             <div class="col-sm-2">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label" for="X">X:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label" for="X">X:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" name="X" id="X" ng-model="auto.X">
                 </div>
@@ -70,7 +82,9 @@
             </div>
             <div class="col-sm-2">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label" for="Y">Y:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label" for="Y">Y:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" name="Y" id="Y" ng-model="auto.Y">
                 </div>
@@ -78,7 +92,9 @@
             </div>
             <div class="col-sm-2">
               <div class="form-group">
-                <div class="col-sm-12"><label class="control-label">(Từ {{auto.start}} → {{auto.end}})</label></div>
+                <div class="col-sm-12">
+                  <label class="control-label">(Từ {{auto.start}} → {{auto.end}})</label>
+                </div>
               </div>
             </div>
           </div>
@@ -87,7 +103,9 @@
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label" for="move">Di chuyển:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label" for="move">Di chuyển:</label>
+                </div>
                 <div class="col-sm-7">
                   <button type="button" class="btn btn-primary form-control" ng-click="addMoves(auto)">Thêm</button>
                 </div>
@@ -99,7 +117,9 @@
           <div class="row" ng-repeat="move in auto.moves">
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">X:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label">X:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" ng-model="move.X">
                 </div>
@@ -107,7 +127,9 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">Y:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label">Y:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" ng-model="move.Y">
                 </div>
@@ -115,7 +137,9 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">Bắt đầu sau:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label">Bắt đầu sau:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" ng-model="move.before">
                 </div>
@@ -127,7 +151,9 @@
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label" for="move">Chạm:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label" for="move">Chạm:</label>
+                </div>
                 <div class="col-sm-7">
                   <button type="button" class="btn btn-primary form-control" ng-click="addTouchs(auto)">Thêm</button>
                 </div>
@@ -139,7 +165,9 @@
           <div class="row" ng-repeat="touch in auto.touchs">
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">X:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label">X:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" ng-model="touch.X">
                 </div>
@@ -147,7 +175,9 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">Y:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label">Y:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" ng-model="touch.Y">
                 </div>
@@ -155,7 +185,9 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">Bắt đầu sau:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label">Bắt đầu sau:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" ng-model="touch.before">
                 </div>
@@ -163,7 +195,9 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <div class="col-sm-5 text-right"><label class="control-label">Trong:</label></div>
+                <div class="col-sm-5 text-right">
+                  <label class="control-label">Trong:</label>
+                </div>
                 <div class="col-sm-7">
                   <input class="form-control" type="number" ng-model="touch.time">
                 </div>
@@ -176,8 +210,7 @@
         <div class="form-group">
           <button type="button" class="btn btn-primary" ng-click="addAction()">THÊM</button>
           <button type="button" class="btn btn-primary" ng-click="render()">XUẤT</button>
-          <button class="btn btn-success" ngf-select="import(selectedFiles)" ng-model="selectedFiles"
-                ngf-before-model-change="loadingFile = true">NHẬP
+          <button class="btn btn-success" ngf-select="import(selectedFiles)" ng-model="selectedFiles" ngf-before-model-change="loadingFile = true">NHẬP
           </button>
           <button type="submit" class="btn btn-primary">Hoàn Thành</button>
           <img ng-show="loadingSubmit" ng-src="/modules/core/client/img/loaders/loader.gif" height="25" width="25" alt="Loading...">

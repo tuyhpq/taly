@@ -11,26 +11,6 @@
     var vm = this;
     vm.form = {};
 
-    var START = {
-      A: '0ScRiPtSePaRaToR1280|720|MULTI:1:0:',
-      B: 'ScRiPtSePaRaToR',
-      C: ':'
-    };
-    var END = {
-      A: '0ScRiPtSePaRaToR1280|720|MSBRL:2:0ScRiPtSePaRaToR'
-    };
-    var MOVE = {
-      A: '0ScRiPtSePaRaToR1280|720|MULTI:1:2:',
-      B: 'ScRiPtSePaRaToR'
-    };
-    var TOUCH = {
-      A: '0ScRiPtSePaRaToR1280|720|MULTI:2:5:',
-      B: 'ScRiPtSePaRaToR',
-      C: '0ScRiPtSePaRaToR1280|720|MULTI:1:6:',
-      D: 'ScRiPtSePaRaToR'
-    };
-    var MID = ':';
-
     vm.setting = {
       start: 0,
       time: 200,
@@ -62,42 +42,49 @@
     };
 
     $scope.reloadAutos = function () {
-      vm.autos.forEach(function (auto, index) {
-        if (index === 0) {
+      for (var i = 0; i < vm.autos.length; i++) {
+        var auto = vm.autos[i];
+        if (auto === null) {
+          continue;
+        }
+        if (i === 0) {
           auto.start = auto.before;
           auto.end = auto.start + auto.time;
         } else {
-          var last = vm.autos[index - 1];
+          var last = getEndAutos(i);
           auto.start = last.end + auto.before;
           auto.end = auto.start + auto.time;
         }
-      });
+      };
     };
 
     $scope.render = function () {
       vm.render = '';
-      vm.autos.forEach(function (auto, index) {
-        var startLine = '' + START.A + auto.X + MID + auto.Y + START.B + auto.start;
+      for (var auto of vm.autos) {
+        if (auto === null) {
+          vm.render += '\n';
+          continue;
+        }
+
+        var startLine = '0ScRiPtSePaRaToR1280|720|MULTI:1:0:' + auto.X + ':' + auto.Y + 'ScRiPtSePaRaToR' + auto.start;
         vm.render += startLine + '\n';
 
         auto.moves.forEach(function (move) {
-          var moveLine = '' + MOVE.A + move.X + MID + move.Y + MOVE.B + (auto.start + move.before);
+          var moveLine = '0ScRiPtSePaRaToR1280|720|MULTI:1:2:' + move.X + ':' + move.Y + 'ScRiPtSePaRaToR' + (auto.start + move.before);
           vm.render += moveLine + '\n';
         });
 
         auto.touchs.forEach(function (touch) {
           var V = auto.moves.length === 0 ? { X: auto.X, Y: auto.Y } : { X: auto.moves[auto.moves.length - 1].X, Y: auto.moves[auto.moves.length - 1].Y }
-          var lineA = '' + TOUCH.A + V.X + MID + V.Y + MID + touch.X + MID + touch.Y + TOUCH.B + (auto.start + touch.before);
+          var lineA = '0ScRiPtSePaRaToR1280|720|MULTI:2:5:' + V.X + ':' + V.Y + ':' + touch.X + ':' + touch.Y + 'ScRiPtSePaRaToR' + (auto.start + touch.before);
           vm.render += lineA + '\n';
-          var lineB = '' + TOUCH.C + V.X + MID + V.Y + TOUCH.D + (auto.start + touch.before + touch.time);
+          var lineB = '0ScRiPtSePaRaToR1280|720|MULTI:1:6:' + V.X + ':' + V.Y + 'ScRiPtSePaRaToR' + (auto.start + touch.before + touch.time);
           vm.render += lineB + '\n';
         });
 
-        var endLine = '' + END.A + auto.end;
+        var endLine = '' + '0ScRiPtSePaRaToR1280|720|MSBRL:9:9ScRiPtSePaRaToR' + auto.end;
         vm.render += endLine + '\n';
-
-        vm.render += '\n';
-      });
+      };
 
       var blob = new Blob([vm.render], { type: 'text/plain' });
       var url = ($window.URL || $window.webkitURL).createObjectURL(blob);
@@ -111,17 +98,10 @@
         reader.readAsText(selectedFiles);
 
         reader.onload = function () {
-          var result = reader.result.trim().replace(/ /g, '').replace(/\n\n/g, '\n');
+          var result = reader.result.trim().replace(/ /g, '');
           result = result.split('\n');
 
-          var listStrings = [];
-          result.forEach(function (value) {
-            if (value && value !== '') {
-              listStrings.push(value);
-            }
-          });
-
-          arrayStringToArrayAuto(listStrings);
+          arrayStringToArrayAuto(result);
         };
 
       }
@@ -157,7 +137,7 @@
         if (line.indexOf('MULTI:1:0:') !== -1) {
           var position = getPositionStartFromLine(line);
           auto = { X: position.X, Y: position.Y, start: position.time, moves: [], touchs: [] };
-          auto.before = vm.autos.length !== 0 ? auto.start - vm.autos[vm.autos.length - 1].end : auto.start
+          auto.before = getEndAutos() !== null ? auto.start - getEndAutos().end : auto.start
 
         } else if (line.indexOf('MSBRL') !== -1) {
           auto.end = getEndFromLine(line);
@@ -186,8 +166,10 @@
           var end = getEndFromLine(line);
           touch.time = end - auto.start - touch.before;
           //  auto.touchs.push(touch);
-        }
 
+        } else {
+          vm.autos.push(null);
+        }
       }
 
       $scope.$apply();
@@ -222,6 +204,16 @@
       var index = line.lastIndexOf(key);
 
       return parseInt(line.slice(index + key.length, line.length), 10);
+    }
+
+    function getEndAutos(i) {
+      var index = i || vm.autos.length;
+      while (index--) {
+        if (vm.autos[index] !== null) {
+          return vm.autos[index]
+        }
+      }
+      return null;
     }
 
   }
