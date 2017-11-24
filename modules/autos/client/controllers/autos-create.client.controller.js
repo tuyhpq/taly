@@ -60,7 +60,8 @@
 
     $scope.render = function () {
       vm.render = '';
-      for (var auto of vm.autos) {
+      for (var i = 0; i < vm.autos.length; i++) {
+        var auto = vm.autos[i];
         if (auto === null) {
           vm.render += '\n';
           continue;
