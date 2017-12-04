@@ -22,7 +22,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "5",
+        "priority": "6",
         "time": "1510537195"
     },
     "111b76015432483b9b1ee3981659a6bc": {
@@ -74,7 +74,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "4",
+        "priority": "5",
         "time": "1507998569"
     },
     "5696c30b36064de594aaf8ef7681ec07": {
@@ -87,7 +87,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "3",
+        "priority": "4",
         "time": "1507515015"
     },
     "6c5ddcff25cf45c1a8e08706b92bae9b": {
@@ -139,7 +139,7 @@
             "playSeconds": "0#0#0",
             "repeatTimes": "1"
         },
-        "priority": "6",
+        "priority": "3",
         "time": "1507203552"
     }
 }
